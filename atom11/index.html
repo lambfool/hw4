@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Ariesmoonth</title>
+</head>
+<link rel="icon" href="favicon.ico">
+<body style ="background-color:#f3f6f4">
+  <audio src="file:///C:/Users/HP/Downloads/music-for-meditation-20534.mp3"></audio>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<section id="title">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+
+
+  $(document).ready(function(){
+  $("p").click(function(){
+    alert("Don't click on me!");
+  });
+  });
+
+
+  function mouseOver() {
+    document.getElementById("demo").style.color = "lightslategrey";
+  }
+  function mouseOut() {
+    document.getElementById("demo").style.color = "darksalmon";
+  }
+
+
+  function bigImg(x) {
+    x.style.height = "450px";
+    x.style.width = "1000px";
+  }
+  function normalImg(x) {
+    x.style.height = "350px";
+    x.style.width = "900px";
+  }
+
+
+  var img = new Image();
+
+
+  img.src = 'lunar.jpg';
+  var CanvasXSize = 10000;
+  var CanvasYSize = 500;
+  var speed = 30; // lower is faster
+  var scale = 1.05;
+  var y = -4.5; // vertical offset
+
+
+
+  var dx = 0.75;
+  var imgW;
+  var imgH;
+  var x = 0;
+  var clearX;
+  var clearY;
+  var ctx;
+
+  img.onload = function() {
+      imgW = img.width * scale;
+      imgH = img.height * scale;
+
+      if (imgW > CanvasXSize) {
+          // image larger than canvas
+          x = CanvasXSize - imgW;
+      }
+      if (imgW > CanvasXSize) {
+          // image width larger than canvas
+          clearX = imgW;
+      } else {
+          clearX = CanvasXSize;
+      }
+      if (imgH > CanvasYSize) {
+          // image height larger than canvas
+          clearY = imgH;
+      } else {
+          clearY = CanvasYSize;
+      }
+
+      // get canvas context
+      ctx = document.getElementById('canvas').getContext('2d');
+
+      // set refresh rate
+      return setInterval(draw, speed);
+  }
+
+  function draw() {
+      ctx.clearRect(0, 0, clearX, clearY); // clear the canvas
+
+      // if image is <= Canvas Size
+      if (imgW <= CanvasXSize) {
+          // reset, start from beginning
+          if (x > CanvasXSize) {
+              x = -imgW + x;
+          }
+          // draw additional image1
+          if (x > 0) {
+              ctx.drawImage(img, -imgW + x, y, imgW, imgH);
+          }
+          // draw additional image2
+          if (x - imgW > 0) {
+              ctx.drawImage(img, -imgW * 2 + x, y, imgW, imgH);
+          }
+      }
+
+      // image is > Canvas Size
+      else {
+          // reset, start from beginning
+          if (x > (CanvasXSize)) {
+              x = CanvasXSize - imgW;
+          }
+          // draw additional image
+          if (x > (CanvasXSize-imgW)) {
+              ctx.drawImage(img, x - imgW + 1, y, imgW, imgH);
+          }
+      }
+      // draw image
+      ctx.drawImage(img, x, y,imgW, imgH);
+      // amount to move
+      x += dx;
+  }
+
+  </script>
+
+  <canvas id="canvas" width="10000" height="200"></canvas>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Ariesmoonth</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="main.html">Houses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="opinion.html">Planets</a>
+
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact Us!</a>
+            </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+
+<h1 onmouseover="mouseOver()" onmouseout="mouseOut()" > Astrology and its basics </h1>
+<p><a href="#"> Astrology </a> is a pseudoscience that claims to discern information about human affairs and terrestrial events by studying the movements and relative positions of celestial objects.
+ It uses scientific knowledge about heavenly bodies, as well as scientific sounding tools, like star charts. Some people use astrology to generate expectations about future events and people's personalities, much as scientific ideas generate expectations. And some claim that astrology is supported by evidence — the experiences of people who feel that astrology has worked for them.
+  There are 12 zodiac signs in astrology:
+</p>
+<div class="img-container">
+<img src="zzz.jpg" alt="funny cat pic" onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0" alt="Smiley" width="900" height="350">
+</div>
+<hr style="border-style: dashed; background-color:black; height:1px">
+
+
+  <p><strong>Tell us about your zodiac sign and we will send more information about you!  </strong></p>
+  <form><div class="form-container">
+    <label for="fname">Your zodiac sign/sun sign: </label><br>
+    <input type="text" id="fname" name="fname"></br>
+  </form></div>
+
+<hr style="border-style: dashed; background-color:black; height:1px">
+<p><h3> Rulers of each zodiac signs </p></h3>
+
+<img >
+<table border = "1">
+ <tr>
+<th> Aries </th>
+<th> Mars </th>
+</tr>
+<tr>
+<th> Taurus </th>
+<th> Venus </th>
+</tr>
+<tr>
+<th>Gemini</th>
+<th> Mercury </th>
+</tr>
+<tr>
+<th> Cancer </th>
+<th>Moon </th>
+</tr>
+<tr>
+<th> Leo </th>
+<th> Sun</th>
+</tr>
+<tr>
+<th> Virgo </th>
+<th>Mercury </th>
+</tr>
+<tr>
+<th>Libra </th>
+<th>Venus </th>
+</tr>
+<tr>
+<th> Scorpio </th>
+<th> Pluto </th>
+</tr>
+<tr>
+<th> Sagittarius </th>
+<th> Jupiter</th>
+</tr>
+<tr>
+<th> Capricorn </th>
+<th> Saturn</th>
+</tr>
+<tr>
+<th>Aquarius</th>
+<th>Uranus</th>
+</tr>
+<tr>
+<th> Pisces </th>
+<th>Neptune </th>
+</tr> </table>
+<hr>
+
+<footer class="bg-light text-center">
+  <div class="container p-4 pb-0">
+    <section class="">
+      <form action="">
+        <div class="row d-flex justify-content-center">
+          <div class="col-auto">
+            <p class="pt-2">
+              <strong>Sign up for our newsletter</strong>
+            </p>
+          </div>
+          <div class="col-md-5 col-12">
+            <div class="form-outline mb-4">
+              <input type="email" id="form5Example27" class="form-control" />
+              <label class="form-label" for="form5Example27">Email address</label>
+            </div>
+          </div>
+          <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-4" style="background-color:lightslategrey">
+              Subscribe
+            </button>
+          </div>
+        </div>
+      </form>
+    </section>
+  </div>
+  <div class="text-center p-3" style="background-color:lightslategrey">
+    © 2022 Copyright:
+    <a class="text-dark" href="index.html">Ariesmoonth.kz</a>
+  </div>
+</footer>
+<hr>
+</body>
+</html>
